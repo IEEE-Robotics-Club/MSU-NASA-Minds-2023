@@ -15,7 +15,7 @@
 #include <stdbool.h>
 
 
-typedef uint8_t pin;// pin number between 0-255
+typedef uint8_t pin; // pin number between 0-255
 
 typedef enum{
     SERVO,          // servo motor
@@ -49,13 +49,13 @@ typedef struct{
    *  once per loop, so that pins for all motors are being updated at the same time (and not more than needed)
    */
   /**********************************************************************/
-void motor_update(motor& motor);
+void motor_update(motor* motor);
 
 /**********************************************************************/
   /** @brief Must be called to configure initial pin outputs for a motor to be usuable.
    *  @param motor Reference to the motor to configure. Members should be initialized prior to calling  
    */
 /**********************************************************************/
-void motor_init(motor& motor);
+void motor_init(motor* motor);
 
 #endif
