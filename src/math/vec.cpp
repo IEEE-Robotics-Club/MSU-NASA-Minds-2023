@@ -1,51 +1,51 @@
-#include "vec.h"
+#include "vec.hpp"
 #include <Arduino.h>
 
 
-Vec2::Vec2(){i = 0, j = 0;}
+Vec2::Vec2(){x = 0, y = 0;}
 
-Vec2::Vec2(const Vec2& arg){i = arg.i, j = arg.j;}
+Vec2::Vec2(const Vec2& arg){x = arg.x, y = arg.y;}
 
-Vec2::Vec2(float x, float y){i = x, j = y;}
+Vec2::Vec2(float x, float y){this->x = x, this->y = y;}
 
 Vec2& Vec2::operator=(const Vec2& second)
 {
-    i = second.i, j = second.j;
+    x = second.x, y = second.y;
     return *this;
 }
 
 
-Vec2 Vec2::operator+(const Vec2& second) const {return Vec2(i + second.i, j + second.j);}
-Vec2 Vec2::operator-(const Vec2& second) const {return Vec2(i - second.i, j - second.j);}
+Vec2 Vec2::operator+(const Vec2& second) const {return Vec2(x + second.x, y + second.y);}
+Vec2 Vec2::operator-(const Vec2& second) const {return Vec2(x - second.x, y - second.y);}
 
-float Vec2::operator*(const Vec2& second) const {return (i * second.i + j * second.j);}
-Vec2 Vec2::operator*(const float second) const {return Vec2(i * second, j * second);}
+float Vec2::operator*(const Vec2& second) const {return (x * second.x + y * second.y);}
+Vec2 Vec2::operator*(const float second) const {return Vec2(x * second, y * second);}
 
 
 
-Vec3::Vec3(){i = 0, j = 0, k = 0;}
+Vec3::Vec3(){x = 0, y = 0, z = 0;}
 
-Vec3::Vec3(const Vec3& arg){i = arg.i, j = arg.j, k = arg.k;}
+Vec3::Vec3(const Vec3& arg){x = arg.x, y = arg.y, z = arg.z;}
 
-Vec3::Vec3(float x, float y, float z){i = x, j = y, k = z;}
+Vec3::Vec3(float x, float y, float z){this->x = x, this->y = y, this->z = z;}
 
 Vec3& Vec3::operator=(const Vec3& second)
 {
-    i = second.i, j = second.j, k = second.k;
+    x = second.x, y = second.y, z = second.z;
     return *this;
 }
 
 
-Vec3 Vec3::operator+(const Vec3& second) const {return Vec3(i + second.i, j + second.j, k + second.k);}
-Vec3 Vec3::operator-(const Vec3& second) const {return Vec3(i - second.i, j - second.j, k - second.k);}
+Vec3 Vec3::operator+(const Vec3& second) const {return Vec3(x + second.x, y + second.y, z + second.z);}
+Vec3 Vec3::operator-(const Vec3& second) const {return Vec3(x - second.x, y - second.y, z - second.z);}
 
-float Vec3::operator*(const Vec3& second) const {return (i * second.i + j * second.j + k * second.k);}
-Vec3 Vec3::operator*(const float second) const {return Vec3(i * second, j * second,k * second);}
+float Vec3::operator*(const Vec3& second) const {return (x * second.x + y * second.y + z * second.z);}
+Vec3 Vec3::operator*(const float second) const {return Vec3(x * second, y * second,z * second);}
 
 
 
-float magnitude(Vec2 vec){return sqrtf(powf(vec.i,2)+powf(vec.j,2));}
-float magnitude(Vec3 vec){return sqrtf(powf(vec.i,2)+powf(vec.j,2)+powf(vec.k,2));}
+float magnitude(Vec2 vec){return sqrtf(powf(vec.x,2)+powf(vec.y,2));}
+float magnitude(Vec3 vec){return sqrtf(powf(vec.x,2)+powf(vec.y,2)+powf(vec.z,2));}
 
 
 Vec3 proj(Vec3 u, Vec3 v)
@@ -66,5 +66,5 @@ float AngleFromHorizontal(Vec2 vec)
     return acos((vec * horizontal)/ magnitude(vec));
 }
 
-Vec3 crossProduct(Vec3 first, Vec3 second){return Vec3(first.j * second.k - first.k * second.j,
-first.k * first.i - first.i * second.k, first.i * second.j - first.j * second.i);}
+Vec3 crossProduct(Vec3 first, Vec3 second){return Vec3(first.y * second.z - first.z * second.y,
+first.z * first.x - first.x * second.z, first.x * second.y - first.y * second.x);}
