@@ -1,5 +1,5 @@
 /**
- * @file motors.h
+ * @file motors.hpp
  * @author Adam Cate (acate@msudenver.edu) aka pepsiman
  * @brief The basic function abstractions for driving motors
  * @version 0.1
