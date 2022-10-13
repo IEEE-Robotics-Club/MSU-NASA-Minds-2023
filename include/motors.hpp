@@ -15,7 +15,7 @@
 #include <stdbool.h>
 
 
-typedef uint8_t pin; // pin number between 0-255
+typedef uint8_t pin_t; // pin number between 0-255
 
 typedef enum{
     SERVO,          // servo motor
@@ -35,10 +35,11 @@ typedef enum{
   /**********************************************************************/
 typedef struct{
     peripheral_t type;
-    pin pin_number;
+    pin_t pwm_pin;
+    pin_t dir_pin;
     uint8_t pwm;
     bool direction;
-}motor;
+}motor_t;
 
 
  /**********************************************************************/
@@ -49,13 +50,31 @@ typedef struct{
    *  once per loop, so that pins for all motors are being updated at the same time (and not more than needed)
    */
   /**********************************************************************/
-void motor_update(motor* motor);
+void motor_update(motor_t* motor);
+
 
 /**********************************************************************/
   /** @brief Must be called to configure initial pin outputs for a motor to be usuable.
    *  @param motor Reference to the motor to configure. Members should be initialized prior to calling  
    */
 /**********************************************************************/
-void motor_init(motor* motor);
+void motor_init(motor_t* motor);
 
+
+/**********************************************************************/
+  /** @brief Set the pwm and motor direction
+   *  @param motor Reference to the motor to configure. Members should be initialized prior to calling  
+   *  @param pwm the sign of the value denotes direction
+   */
+/**********************************************************************/
+void motor_set_pwm(motor_t* motor, int16_t pwm);
+
+
+/**********************************************************************/
+  /** @brief Set the servo angle
+   *  @param motor Reference to the servo to configure. Must be a servo.
+   *  @param angle angle to set
+   */
+/**********************************************************************/
+void servo_set_angle(motor_t* servo, int16_t angle);
 #endif
