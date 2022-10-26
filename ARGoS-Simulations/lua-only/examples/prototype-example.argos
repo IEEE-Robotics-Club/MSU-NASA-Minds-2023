@@ -34,9 +34,6 @@
 
 
 <arena size="1, 1,1" center="0,0,0" positional_grid_size="1, 1, 1">
-    <floor id="floor"
-           source="image"
-           path="textures/moon_texture.png" />
 
   <box id="wall_north" size="1,0.1,0.1" movable="false">
     <body position="0,0.5,0" orientation="0,0,0" />
@@ -97,8 +94,6 @@
   <!--
       In ARGoS, multiple physics engines can run at the same time.
       In this section you say which engines to use for the experiment.
-      To know which engines are available, type at the command prompt:
-      
       $ argos3 -q physics_engines
   -->
   <physics_engines>
@@ -145,3 +140,5 @@
     </qt-opengl>
   </visualization>
 </argos-configuration>
+<?xml version = "1.0" ?>
+
