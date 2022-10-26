@@ -1,4 +1,4 @@
-require movement-functions
+require 'movement-functions'
 
 function init()
     reset()
