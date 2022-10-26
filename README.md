@@ -13,7 +13,7 @@ We will be modelling and testing our system methods using ARGoS Robotic Simulato
 
 3. Navigate to the repository using the terminal and run the command:
 
-  `$ argos3 -c  lua-only/examples/prototype-example.argos`
+  `$ argos3 -c  lua-only/examples/movement-MVP.argos`
 
 This will run the example simulation and also open the Lua editor where you can change the Robot's behaviour with a Lua Script.
 
