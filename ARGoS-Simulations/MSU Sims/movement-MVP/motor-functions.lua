@@ -1,3 +1,7 @@
+-- global motor speed factor for pwm. For example,
+-- a value of 1000 indicates that a pwm value of 1000 will result in a speed of 1.
+_motor_pwm_speed_factor = 500 
+
 --- Initialize a table to store motor data
 --- @param motor table The object to initialize as a motor
 --- @param joint table The assigned argos joint
@@ -16,13 +20,13 @@ function motor_drive(motor, pwm)
 
     local adjusted_pwm = pwm
 
-    if(pwm > motor.max_pwm)
+    if(adjusted_pwm > motor.max_pwm)
     then
-        pwm = motor.max_pwm
+        adjusted_pwm = motor.max_pwm
     elseif(pwm < -1 * motor.max_pwm)
     then
-        pwm = -1*motor.max_pwm
+        adjusted_pwm = -1*motor.max_pwm
     end
     
-    motor.joint.set_target(pwm)
+    motor.joint.set_target(adjusted_pwm / _motor_pwm_speed_factor)
 end
