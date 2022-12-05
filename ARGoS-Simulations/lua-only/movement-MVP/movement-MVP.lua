@@ -1,4 +1,5 @@
 require 'movement-functions'
+require 'motor_functions'
 
 function init()
     reset()
