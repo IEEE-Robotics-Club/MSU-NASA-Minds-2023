@@ -1,0 +1,3 @@
+[submodule "ARGoS-Simulations/lua-only/lua-state-machine"]
+	path = ARGoS-Simulations/lua-only/lua-state-machine
+	url = git@github.com:kyleconroy/lua-state-machine.git
