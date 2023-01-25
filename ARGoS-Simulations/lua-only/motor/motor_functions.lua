@@ -6,6 +6,12 @@
 ---@field direction integer
 
 
+---@class Servo A basic servo object that encodes a servo's state
+---@field angle number
+---@field max_angle number
+
+
+
 ---Used to initialize a motor object with its associated information.
 ---Should be used on an empty table.
 ---@param motor Motor The empty motor object to initialize.
@@ -19,7 +25,7 @@ function motor_init(motor, max_speed, joint)
 end
 
 ---Set the corresponding motor values and drive the motor.
----@param motor table The motor to drive.
+---@param motor Motor The motor to drive.
 ---@param speed number The signed pwm value for this motor. Sign indicates direction. Clamped to motor.max_pwm.
 function motor_drive(motor, speed)
     local adjusted_speed = speed
