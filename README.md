@@ -1,8 +1,8 @@
 # MSU-NASA-Minds-2023 - Lua Testing branch (do not merge)
 This is where we will be testing lua functionality outside of ARGoS and defining basic state machine template outlines.
 
-## What is a state machine and why are we using them?
-Think of state machines almost like a flowchart. A
+## What is a finite state machine and why are we using them?
+Think of state machines almost like a flowchart with "events" moving the current "state" from one cell to another. Each event has a fixed set of states it moves from, and a single state that it moves to.
 
 # Getting started
 
