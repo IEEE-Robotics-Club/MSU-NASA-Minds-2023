@@ -43,10 +43,10 @@ Item,Qty,Reference(s),Value,LibPart,Footprint,Datasheet,Availability,Description
 ,,U6,A3909,A3909 H-Bridge:A3909,,,,,,,,,,,0.95,,
 ,,U7,A3909,A3909 H-Bridge:A3909,,,,,,,,,,,0.95,,
 ,,U8,A3909,A3909 H-Bridge:A3909,,,,,,,,,,,0.95,,
-,,U9,DEV-16771,DEV-16771:DEV-16771,MODULE_DEV-16771,,,,SparkFun Electronics,4.07mm,,,4.1,,3.05,,Manufacturer recommendations
-,,,,,,,,,,,,,,,47.74,,
-,,,,,,,,,,,,,,,,,
-,,,,,,,,,,,,,,,,,
+,,U9,DEV-16771,DEV-16771:DEV-16771,MODULE_DEV-16771,,,,SparkFun Electronics,4.07mm,,,4.1,,31.5,,Manufacturer recommendations
+,,LIDAR,,,,,,,,,,,,,25,,
+,,BT,,,,,,,,,,,,,3.05,,
+,,,,,,,,,,,,,,,104.24,,
 Collated Components:,,,,,,,,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,
 Item,Qty,Reference(s),Value,LibPart,Footprint,Datasheet,Availability,Description,MANUFACTURER,MAXIMUM_PACKAGE_HEIGHT,MF,MP,PARTREV,Package,Price,Purchase-URL,STANDARD
