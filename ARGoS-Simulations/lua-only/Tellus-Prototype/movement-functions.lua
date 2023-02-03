@@ -9,10 +9,10 @@ end
 
 function driveForward(velocity)
     robot.joints.bl_arm_wheel.set_target(velocity)
-    robot.joints.ml_arm_wheel.set_target(velocity)
+    robot.joints.ml_arm_wheel.set_target(0-velocity)
 	robot.joints.fl_arm_wheel.set_target(velocity)
     robot.joints.br_arm_wheel.set_target(0-velocity)
-	robot.joints.mr_arm_wheel.set_target(0-velocity)
+	robot.joints.mr_arm_wheel.set_target(velocity)
     robot.joints.fr_arm_wheel.set_target(0-velocity)
 end
 
