@@ -1,3 +1,5 @@
+require "movement-functions"
+
 -- Use Shift + Click to select a robot
 -- When a robot is selected, its variables appear in this editor
 
@@ -19,9 +21,7 @@ end
 --[[ This function is executed at each time step
      It must contain the logic of your controller ]]
 function step()
-	robot.joints.fl_arm_wheel.set_target(-1)
-	robot.joints.fr_arm_wheel.set_target(-1)
-	robot.joints.base_lidar.set_target(-1)
+	driveForward(5)
    -- put your code here
 end
 
