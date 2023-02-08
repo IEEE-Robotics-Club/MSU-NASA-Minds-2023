@@ -4,7 +4,7 @@
 
 <framework>
 	<experiment length ="0"
-		    ticks_per_second="24"
+		    ticks_per_second="4000"
         random_seed= "0"/>
 </framework>
 
@@ -20,7 +20,7 @@
         <joint id="mr_arm_wheel" mode="velocity" max_impulse="0.05f"/>
 
         <joint id="ml_arm_wheel" mode="velocity" max_impulse="0.05f"/>
-	      <joint id="base_lidar"  mode="velocity" max_impulse="0.05f"/>
+	<joint id="base_lidar"  mode="velocity" max_impulse="0.05f"/>
       </joints>
 
       <radios implementation="default" medium="radios"/>
@@ -28,7 +28,7 @@
 
     <sensors>
       <joints implementation="default">
-      
+        <joint id="base_lidar" mode="position"/>      
       </joints>
       
       <radios implementation="default" medium="radios"/>
@@ -57,6 +57,10 @@
   </box>
   <box id="wall_west" size="0.1,1,0.1" movable="false">
     <body position="-0.5,0,0" orientation="0,0,0" />
+  </box>
+
+  <box id="box" size= "0.2,0.1,0.1 "mass="1" movable="true">
+    <body position="0.1,0,0.1" orientation="0,90,0"/>
   </box>
 
   <prototype id="tellus" movable="true">
@@ -161,11 +165,11 @@
 	<radios medium="radios">
           <radio anchor="base" duplex_mode="half" range="1"
                  position="0,0,0.0075"/>
-  	</radios>
-  	
-  	<proximity_sensors>
-  		<sensor anchor="lidar_servo" position="0,0,0" offset="0,0,0.02" direction="1,0,-1" range="0.2" show_rays="true"/>
-  	</proximity_sensors>
+        </radios>
+  
+	<proximity_sensors>
+           <sensor anchor="lidar_servo" position="0,0,0" offset="0,0,0.02" direction="1,0,0" range="1" show_rays="true"/>
+        </proximity_sensors>
   </devices>
   </prototype>
 
