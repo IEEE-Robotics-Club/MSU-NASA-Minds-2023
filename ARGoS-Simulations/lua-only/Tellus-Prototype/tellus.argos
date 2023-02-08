@@ -14,10 +14,13 @@
       <joints implementation="default">
         <joint id="fr_arm_wheel" mode="velocity" max_impulse="0.05f"/>
         <joint id="fl_arm_wheel" mode="velocity" max_impulse="0.05f"/>
+
         <joint id="bl_arm_wheel" mode="velocity" max_impulse="0.05f"/>
         <joint id="br_arm_wheel" mode="velocity" max_impulse="0.05f"/>
-	<joint id="base_lidar"  mode="velocity" max_impulse="0.05f"/>
+        <joint id="mr_arm_wheel" mode="velocity" max_impulse="0.05f"/>
 
+        <joint id="ml_arm_wheel" mode="velocity" max_impulse="0.05f"/>
+	      <joint id="base_lidar"  mode="velocity" max_impulse="0.05f"/>
       </joints>
 
       <radios implementation="default" medium="radios"/>
@@ -25,6 +28,7 @@
 
     <sensors>
       <joints implementation="default">
+      
       </joints>
       
       <radios implementation="default" medium="radios"/>
@@ -134,7 +138,7 @@
           <parent link="ml_arm" position="0.015,-0.025,0" orientation="0,0,0"/>
           <child link="ml_wheel" position="0,0,0" orientation="0,90,0"/>  
 	</joint>
-	
+
 		
 	<joint id="mr_arm_wheel" type="revolute" axis = "0,0,1">
           <parent link="mr_arm" position="-0.005,-0.025,0" orientation="0,0,0"/>
