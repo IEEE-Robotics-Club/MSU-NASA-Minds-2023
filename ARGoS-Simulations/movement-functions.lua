@@ -1,46 +1,46 @@
 function stopMovement()
 	robot.joints.bl_arm_wheel.set_target(0)
 	robot.joints.ml_arm_wheel.set_target(0)
-    robot.joints.fl_arm_wheel.set_target(0)
-    robot.joints.br_arm_wheel.set_target(0)
+	robot.joints.fl_arm_wheel.set_target(0)
+	robot.joints.br_arm_wheel.set_target(0)
 	robot.joints.mr_arm_wheel.set_target(0)
-    robot.joints.fr_arm_wheel.set_target(0)
+	robot.joints.fr_arm_wheel.set_target(0)
 end
 
 function driveForward(velocity)
-    robot.joints.bl_arm_wheel.set_target(velocity)
-    robot.joints.ml_arm_wheel.set_target(velocity)
+	robot.joints.bl_arm_wheel.set_target(velocity)
+	robot.joints.ml_arm_wheel.set_target(0-velocity)
 	robot.joints.fl_arm_wheel.set_target(velocity)
-    robot.joints.br_arm_wheel.set_target(0-velocity)
-	robot.joints.mr_arm_wheel.set_target(0-velocity)
-    robot.joints.fr_arm_wheel.set_target(0-velocity)
+	robot.joints.br_arm_wheel.set_target(0-velocity)
+	robot.joints.mr_arm_wheel.set_target(velocity)
+	robot.joints.fr_arm_wheel.set_target(0-velocity)
 end
 
 function turnLeft(velocity)
-    robot.joints.bl_arm_wheel.set_target(0-velocity)
-	robot.joints.ml_arm_wheel.set_target(0-velocity)
-    robot.joints.fl_arm_wheel.set_target(0-velocity)
-    robot.joints.br_arm_wheel.set_target(0-velocity)
-	robot.joints.mr_arm_wheel.set_target(0-velocity)
-    robot.joints.fr_arm_wheel.set_target(0-velocity)
+	robot.joints.bl_arm_wheel.set_target(0-velocity)
+	robot.joints.ml_arm_wheel.set_target(velocity)
+	robot.joints.fl_arm_wheel.set_target(0-velocity)
+	robot.joints.br_arm_wheel.set_target(0-velocity)
+	robot.joints.mr_arm_wheel.set_target(velocity)
+	robot.joints.fr_arm_wheel.set_target(0-velocity)
 end
 
 function turnRight(velocity)
-    robot.joints.bl_arm_wheel.set_target(velocity)
-	robot.joints.ml_arm_wheel.set_target(velocity)
-    robot.joints.fl_arm_wheel.set_target(velocity)
-    robot.joints.br_arm_wheel.set_target(velocity)
-	robot.joints.mr_arm_wheel.set_target(velocity)
-    robot.joints.fr_arm_wheel.set_target(velocity)
+	robot.joints.bl_arm_wheel.set_target(velocity)
+	robot.joints.ml_arm_wheel.set_target(0-velocity)
+	robot.joints.fl_arm_wheel.set_target(velocity)
+	robot.joints.br_arm_wheel.set_target(velocity)
+	robot.joints.mr_arm_wheel.set_target(0-velocity)
+	robot.joints.fr_arm_wheel.set_target(velocity)
 end
 
 function reverse(velocity)
-    robot.joints.bl_arm_wheel.set_target(0-velocity)
-    robot.joints.ml_arm_wheel.set_target(0-velocity)
+	robot.joints.bl_arm_wheel.set_target(0-velocity)
+	robot.joints.ml_arm_wheel.set_target(velocity)
 	robot.joints.fl_arm_wheel.set_target(0-velocity)
-    robot.joints.br_arm_wheel.set_target(velocity)
-	robot.joints.mr_arm_wheel.set_target(velocity)
-    robot.joints.fr_arm_wheel.set_target(velocity)
+	robot.joints.br_arm_wheel.set_target(velocity)
+	robot.joints.mr_arm_wheel.set_target(0-velocity)
+	robot.joints.fr_arm_wheel.set_target(velocity)
 end
 
 function getYaw()
@@ -118,8 +118,3 @@ function tablelength(T)
 	for _ in pairs(T) do count = count + 1 end
 	return count
   end
-
-
-
-
-
