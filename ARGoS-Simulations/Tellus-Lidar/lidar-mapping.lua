@@ -1,5 +1,5 @@
-function lidar_setup()
-	robot.joints.base_lidar.set_target(10)
+function lidar_init(velocity)
+	robot.joints.base_lidar.set_target(velocity)
 end
 
 function lidar_step()
@@ -12,8 +12,6 @@ function lidar_step()
 		end
 	end 
 -- Logging for now, but this function should probably return a table containing {distance, phase}
-	if robot.proximity[1] > 0 then
-   		log(robot.proximity[1]) 
-		log(n_rot)
-	end
+	return{n_rot, robot.proximity[1],}
+
 end
