@@ -1,5 +1,4 @@
-require "movement-functions"
-
+require 'movement-functions'
 -- Use Shift + Click to select a robot
 -- When a robot is selected, its variables appear in this editor
 
@@ -21,7 +20,11 @@ end
 --[[ This function is executed at each time step
      It must contain the logic of your controller ]]
 function step()
-	driveTo(1,1,5)
+	driveTo(1,1,15)
+	if robot.positioning.position.x >= 1 and robot.positioning.position.y >= 1 then
+		stopMovement()
+	end
+	
    -- put your code here
 end
 
