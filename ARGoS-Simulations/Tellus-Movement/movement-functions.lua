@@ -116,7 +116,7 @@ function driveTo(x,y, forward_velocity)
 		isTurning = false
 	else
 		if a < 0.2 then
-				driveForward(forward_velocity)		
+			driveForward(forward_velocity)		
 		end
 	end
 	return isTurning
