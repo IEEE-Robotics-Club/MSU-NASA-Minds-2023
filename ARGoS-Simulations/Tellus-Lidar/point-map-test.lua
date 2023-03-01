@@ -1,5 +1,5 @@
 require "lidar-mapping"
-require "point-map"
+require "movement-functions"
 -- Use Shift + Click to select a robot
 -- When a robot is selected, its variables appear in this editor
 
@@ -11,11 +11,11 @@ require "point-map"
 
 
 --[[ This function is executed every time you press the 'execute' button ]]
-function init
+function init()
 	--Lidar Spinning at 10Hz, with sample rate 4000Hz
 	--Lidar has rotational velocity of 62.6cm/s 
 	--Attained through guess and check (400 Frames for 1 full rotation @ 4000 ticks/sec) 
-	lidar_init(62.6)
+	lidar_init(5)
 		
 end
 
@@ -24,14 +24,16 @@ end
 --[[ This function is executed at each time step
      It must contain the logic of your controller ]]
 function step()
-	local lidar_reading = lidar_step()ss
+	local lidar_reading = lidar_step()
 	
 	--polar to rectanglar conversion if something is detected with the LiDAR
-	if lidar_reading > 0 then
+	if lidar_reading[2] < 0.9 then
 		local x = lidar_reading[2]*math.cos(lidar_reading[1])
 		local y = lidar_reading[2]*math.sin(lidar_reading[1])
+		log("Coordinate x ", x)
+		log("Coordinate y ", y)
 	end
-	
+	driveTo(0,1,10)
    -- put your code here
 end
 

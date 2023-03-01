@@ -9,8 +9,8 @@ function lidar_step()
 	
 	--Since the joints measure total displacement, continually rotating the lidar module will continually increase the lidar encoder position measurement. 
 
-	while n_rot > 2*Math.pi do 
-		n_rot = n_rot-(2*Math.pi)		
+	while n_rot > 2*math.pi do 
+		n_rot = n_rot-(2*math.pi)		
 	end
  
 -- Return a table containing {phase, distance}

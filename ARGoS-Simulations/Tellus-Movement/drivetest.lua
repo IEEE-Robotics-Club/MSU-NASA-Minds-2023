@@ -20,10 +20,7 @@ end
 --[[ This function is executed at each time step
      It must contain the logic of your controller ]]
 function step()
-	driveTo(1,1,15)
-	if robot.positioning.position.x >= 1 and robot.positioning.position.y >= 1 then
-		stopMovement()
-	end
+	driveForward(10)
 	
    -- put your code here
 end

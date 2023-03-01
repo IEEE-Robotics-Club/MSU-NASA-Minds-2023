@@ -13,7 +13,7 @@ function Map:convertToLocal(x, y, sec_bl_x, sec_bl_y)
 	local loc_x = x - sec_bl_x
 	local loc_y = y - sec_bl_y
 	
-	return {loc_x, loc_y)
+	return {loc_x, loc_y}
 end
 	
 function Map:normalize(loc_x, loc_y)
