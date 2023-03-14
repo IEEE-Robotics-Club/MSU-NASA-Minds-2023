@@ -1,9 +1,13 @@
 function generatePath(bottom_left, length, width, offset)
+	--Create table of points, and generate first point, which is the bottom left corner of the sector
 	local travel_path = {}
 	local start = {bottom_left["x"]+offset, bottom_left["y"]+offset}
 	local x = start[1]
 	local y = start[2]
 	table.insert(travel_path, start)
+	
+	--For each of the sections of the path, generate the "snake like" pattern with the length running along the x direction 4 points at a time
+	--(Travel East, North, West, North)
 	for i = 1,(length/(2*width)), 1 
 		do 
 			x = x + length
@@ -15,8 +19,13 @@ function generatePath(bottom_left, length, width, offset)
 			y = y + width
 			table.insert(travel_path,{x, y})
 	end
+	--Insert the last point into the table 
 	x = x + length
 	table.insert(travel_path,{x, y})
+	
+	
+	--For each of the sections of the path, generate the "snake like" pattern with the length running along the y direction 4 points at a time
+	--(Travel South, West, North, West)
 	for i = 1,(length/(2*width)), 1 
 		do 
 			y = y - length
@@ -28,12 +37,18 @@ function generatePath(bottom_left, length, width, offset)
 			x = x - width
 			table.insert(travel_path,{x, y})
 	end
+	
+	--Insert the final point to the point table 
 	y = y - length
 	table.insert(travel_path,{x, y})
+	
+	--Return the table full of target vectors 
 	return travel_path
 end
 
 function generateLargePath(bottom_left, length, width, offset)
+	--Generate Large Path is the same algorithm and logic as generatePath, the only difference being that there is intermmediary points between the
+	--extreme edges. This means that there are double the points. 
 	local travel_path = {}
 	local start = {bottom_left["x"]+offset, bottom_left["y"]+offset}
 	local x = start[1]
