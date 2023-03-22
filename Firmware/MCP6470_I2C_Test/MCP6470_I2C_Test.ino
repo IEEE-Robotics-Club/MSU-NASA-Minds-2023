@@ -71,9 +71,15 @@ bool MCP6470::readInfo()
 
 //Test Script
 void setup() {
-  // put your setup code here, to run once:
+    
+  Serial.begin(9600);
   MCP6470 * myDevice = new MCP6470(0,0);
-  myDevice->readInfo(); 
+  if (myDevice->readInfo()){
+    Serial.print("Device Identified");
+  } 
+  else{
+    Serial.print("Something went wrong");
+  }
 
 }
 
