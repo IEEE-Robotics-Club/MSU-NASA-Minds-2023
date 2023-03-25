@@ -88,9 +88,12 @@ function CoopMappingAlgorithmStep(map, agentState)
 	end
 
     --If we detect an obstacle, we will temporarily change the current target to avoid it
-    if ObstacleDetect() then
+--[[
+ if ObstacleDetect() then
         map["target"] = ObstacleAvoid();
     end
+
+]]  
 
     --Drive toward the target
     driveTo(map["target"]["x"], map["target"]["y"], speed)
