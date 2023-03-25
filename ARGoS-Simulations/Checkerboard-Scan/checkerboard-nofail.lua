@@ -22,7 +22,7 @@ function step()
 	--Communication Logic
 
 	--Transmit square to everybody in range
-	robot.radios.radio_tx.tx_data({mySquare})
+	--robot.radios.radio_tx.tx_data({mySquare})
 --[[
 	--Receive everybody elses data
 	--If there is data to receive
