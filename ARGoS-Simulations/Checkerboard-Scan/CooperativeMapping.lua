@@ -1,5 +1,4 @@
-require ('movement-functions')
-require ('mapping-functions')
+
 
 Map = {
     --Map Meta Data
@@ -252,3 +251,22 @@ end
 function ReceiveUpdate(agentState)
     print(agentState)
 end
+
+robot = {
+    positioning = {
+        position ={
+            x = -1.7,
+            y = -1.7
+        }
+    }
+}
+
+Home_coord = {-1.6, -1.6}
+NumberOfBots = 3
+FieldSize = 3
+Center = {0,0}
+AgentMap = {}
+AgentState= {}
+
+AgentMap = CoopMappingAlgorithmInit(Home_coord, NumberOfBots, FieldSize, Center)
+print("help")
