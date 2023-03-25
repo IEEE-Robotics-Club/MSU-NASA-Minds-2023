@@ -21,7 +21,7 @@ Map = {
     --Scientific Data
     data = {},
     displacement_thresh = 0.25,
-    last_data_point = {},
+    last_data_point = {x=0, y=0},
 
     --GPR Sweep Info
     gprWidth = 0.25,
