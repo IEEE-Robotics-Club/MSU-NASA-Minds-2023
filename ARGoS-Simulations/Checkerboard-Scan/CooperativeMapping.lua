@@ -82,7 +82,8 @@ function CoopMappingAlgorithmStep(map, agentState)
                 speed = 0
 			end
 		else
-			map["target"]  = ClosestSquare(map)
+			map["currentSquare"] = ClosestSquare(map)
+			map["target"] = map["currentSquare"]["bl"]
 		end
 	end
 
