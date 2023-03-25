@@ -5,7 +5,6 @@ require ('mapping-functions')
 -- When a robot is selected, its variables appear in this editor
 local flag = false
 
-
 -- Put your global variables here
 
 local target = 1
@@ -61,7 +60,24 @@ function step()
 		end
 	end
 
-	--Navigation Logic
+	if (obstacleDetect()) then 
+		obstacleAvoid()
+	else
+		checkerboardStep()
+	end
+	
+end
+
+function reset()
+	init()
+end
+
+function destroy()
+
+end
+
+function checkerboardStep()
+--Navigation Logic
 	--Get the current position
 	current_x= robot.positioning.position.x
 	current_y= robot.positioning.position.y
@@ -71,6 +87,7 @@ function step()
 	local traj_magnitude=math.sqrt(sum_of_squares)
 
 	--If we are far away, drive to the current target
+
 	if (traj_magnitude > 0.1) then
 		isTurning = driveTo(current_target[1],current_target[2], 5)
 	--Else, We have arrived at the target 
@@ -105,12 +122,4 @@ function step()
 			current_target = current_path[target]
 		end
 	end
-end
-
-function reset()
-	init()
-end
-
-function destroy()
-
 end

@@ -9,28 +9,40 @@
 </framework>
 
 <controllers>
-  <lua_controller id="gpr-bot">
-    <actuators>
-    	<radios implementation="default" medium="radios" />
+  <lua_controller id="tellus_controller">
+      <actuators>
         <joints implementation="default">
-         <joint id="freel" mode="velocity" max_impulse="0.05f"/>
-         <joint id="fleel" mode="velocity" max_impulse="0.05f"/>
-         <joint id="breel" mode="velocity" max_impulse="0.05f"/>
-         <joint id="bleel" mode="velocity" max_impulse="0.05f"/>
-      </joints>
-    </actuators>
+          <joint id="fr_arm_wheel" mode="velocity" max_impulse="0.05f"/>
+          <joint id="fl_arm_wheel" mode="velocity" max_impulse="0.05f"/>
 
-    <sensors>
-    <radios implementation="default" medium= "rads" show_rays="true" />    
-      <joints implementation="default">
-        <joint id="freel" mode="velocity"/>
-        <joint id="fleel" mode="velocity"/>
-        <joint id="breel" mode="velocity"/>
-        <joint id="bleel" mode="velocity"/>
+          <joint id="bl_arm_wheel" mode="velocity" max_impulse="0.05f"/>
+          <joint id="br_arm_wheel" mode="velocity" max_impulse="0.05f"/>
+          <joint id="mr_arm_wheel" mode="velocity" max_impulse="0.05f"/>
+
+          <joint id="ml_arm_wheel" mode="velocity" max_impulse="0.05f"/>
+    <joint id="base_lidar"  mode="velocity" max_impulse="0.05f"/>
+        </joints>
+
+        <radios implementation="default" medium="radios"/>
+      </actuators>
+
+      <sensors>
+        <joints implementation="default">
+          <joint id="base_lidar" mode="position"/>
+    <joint id="fr_arm_wheel" mode="velocity"/>
+    <joint id="fl_arm_wheel" mode="velocity"/>      
+    <joint id="br_arm_wheel" mode="velocity"/>
+          <joint id="bl_arm_wheel" mode="velocity"/>
+          <joint id="mr_arm_wheel" mode="velocity"/>
+          <joint id="ml_arm_wheel" mode="velocity"/>
       </joints>
-      <positioning implementation = "default"/>
-    </sensors>
-    <params />
+        
+        <radios implementation="default" medium="radios"/>
+        <proximity implementation= "default" show_rays="true"/>
+        <positioning implementation = "default"/>
+
+      </sensors>
+      <params />
   </lua_controller>
 </controllers>
 
@@ -57,88 +69,116 @@
         <position method="uniform" min="-16,-16,0" max="-8,-8,0" />
         <orientation method="gaussian" mean="0,0,0" std_dev="0,0,0" />
         <entity quantity="1" max_trials="100">
-        <prototype id="gpr-bot" movable="true">
-  
-    <controller config="gpr-bot"/>
-    <links ref = "base">
-      <link id="base" geometry="box" size="1.00,0.30,0.14" mass="1" position="0,0,0.11" orientation="0,0,0"/>
-      
-      <link id="base_r" geometry="box" size="0.4,0.14,0.2" mass="1" position="0,-0.15,0.19" orientation="0,0,90"/>
-      <link id="base_l" geometry="box" size="0.4,0.14,0.2" mass="1" position="0,0.15,0.19" orientation="0,0,-90"/>
-      
-      <link id="axle_fr" geometry="cylinder" radius="0.05" height="0.2" mass="1" position="0.3875,-0.15,0.18" orientation="0,0,90"/>
-      <link id="axle_fl" geometry="cylinder" radius="0.05" height="0.2" mass="1" position="0.3875, 0.15,0.18" orientation="0,0,-90"/>
-      
-      <link id="axle_br" geometry="cylinder" radius="0.05" height="0.2" mass="1" position="-0.3875,-0.15,0.18" orientation="0,0,90"/>
-      <link id="axle_bl" geometry="cylinder" radius="0.05" height="0.2" mass="1" position="-0.3875, 0.15,0.18" orientation="0,0,-90"/>
-      
-      <link id="wheel_fr" geometry="cylinder" radius=".11" height=".05" mass="1" position="0.3875,-0.35,0.18" orientation="0,0,90"/>
-      <link id="wheel_fl" geometry="cylinder" radius=".11" height=".05" mass="1" position="0.3875, 0.35,0.18" orientation="0,0,-90"/>
-      <link id="wheel_br" geometry="cylinder" radius=".11" height=".05" mass="1" position="-0.3875,-0.35,0.18" orientation="0,0,90"/>
-      <link id="wheel_bl" geometry="cylinder" radius=".11" height=".05" mass="1" position="-0.3875, 0.35,0.18" orientation="0,0,-90"/>
-    
-    </links>
+        <prototype id="tellus" movable="true">
+          <body position = "0,0,0.1" orientation = "0,0,0"/>
+          <controller config="tellus_controller"/>
 
-    <joints>
-    <joint id="base_r" type="fixed" axis="0,0,0">
-	    <parent link="base" position="0,-0.15,0.07" orientation="0,0,90"/>
-	    <child link="base_r" position="0,0,0" orientation="0,0,0"/>
-    </joint>
-	
-    <joint id="base_l" type="fixed" axis="0,0,0">
-        <parent link="base" position="0,0.15,0.07" orientation="0,0,-90"/>
-        <child link="base_l" position="0,0,0" orientation="0,0,0"/>
-    </joint>
-      
-    <joint id="fraxle" type="fixed" axis="0,0,0">
-        <parent link="base" position="0.3875,-0.15,0.07" orientation="0,0,90"/>
-        <child link="axle_fr" position="0,0,0" orientation="0,0,0"/>
-    </joint>
-    
-    <joint id="flaxle" type="fixed" axis="0,0,0">
-        <parent link="base" position="0.3875,0.15,0.07" orientation="0,0,-90"/>
-        <child link="axle_fl" position="0,0,0" orientation="0,0,0"/>
-    </joint>
-    
-    <joint id="braxle" type="fixed" axis="0,0,0">
-        <parent link="base" position="-0.3875,-0.15,0.07" orientation="0,0,90"/>
-        <child link="axle_br" position="0,0,0" orientation="0,0,0"/>
-    </joint>
-    
-    <joint id="blaxle" type="fixed" axis="0,0,0">
-        <parent link="base" position="-0.3875,0.15,0.07" orientation="0,0,-90"/>
-        <child link="axle_bl" position="0,0,0" orientation="0,0,0"/>
-    </joint>
-      
-    <joint id="freel" type="revolute" axis="0,0,1">
-        <parent link="axle_fr" position="0,0,0.2" orientation="0,0,0"/>
-        <child link="wheel_fr" position="0,0,0" orientation="0,0,0"/>
-    </joint>
-    
-    <joint id="fleel" type="revolute" axis="0,0,1">
-        <parent link="axle_fl" position="0,0,0.2" orientation="0,0,0"/>
-        <child link="wheel_fl" position="0,0,0" orientation="0,0,0"/>
-    </joint>
-    
-    <joint id="breel" type="revolute" axis="0,0,1">
-        <parent link="axle_br" position="0,0,0.2" orientation="0,0,0"/>
-        <child link="wheel_br" position="0,0,0" orientation="0,0,0"/>
-    </joint>
-    
-    <joint id="bleel" type="revolute" axis="0,0,1">
-        <parent link="axle_bl" position="0,0,0.2" orientation="0,0,0"/>
-        <child link="wheel_bl" position="0,0,0" orientation="0,0,0"/>
-    </joint>
-    </joints>
-    
-    <devices>
- 	<radios medium ="radios">
- 		<radio id="radio_rx" anchor ="base" range ="50" position =".05 ,0 ,.0125"/>
- 		<radio id="radio_tx" anchor ="base" range ="50" position =" -.05 ,0 ,.0125"/>
- 	</radios>
-    </devices>
-    
+          <links ref = "base">
+            <link id="base" geometry="box" size="0.1,0.05,0.02" mass="1" position="0,0,0" orientation="0,0,0"/>
+            <link id="lidar_servo" geometry="cylinder" radius="0.01" height="0.02" mass="0.2" position="0.04,0,0.02" orientation="0,0,0"/>
+            <link id="fl_arm" geometry="box" size="0.01,0.05,0.01" mass="0.1" position="0.05,0.03,-0.01" orientation="90,45,0"/>
+            <link id="fr_arm" geometry="box" size="0.01,0.05,0.01" mass="0.1" position="0.05,-0.03,-0.01" orientation="90,45,0"/>
+            
+            <link id="ml_arm" geometry="box" size="0.01,0.05,0.01" mass="0.1" position="-0.025,0.03,-0.01" orientation="90,45,0"/>
+            <link id="mr_arm" geometry="box" size="0.01,0.05,0.01" mass="0.1" position="-0.025,-0.03,-0.01" orientation="90,45,0"/>
+                  
+            <link id="bl_arm" geometry="box" size="0.01,0.05,0.01" mass="0.1" position="-0.05,0.03,-0.01" orientation="90,-45,0"/>
+            <link id="br_arm" geometry="box" size="0.01,0.05,0.01" mass="0.1" position="-0.05,-0.03,-0.01" orientation="90,-45,0"/>
+            
+            <link id= "fl_wheel" geometry ="cylinder" radius="0.02" height= "0.01" mass="0.1" position="0.06,0.045,-0.02" orientation="0,0,90"/>
+            <link id= "fr_wheel" geometry ="cylinder" radius="0.02" height= "0.01" mass="0.1" position="0.06,-0.04,-0.02" orientation="0,0,90"/>
+            
+            <link id= "ml_wheel" geometry ="cylinder" radius="0.02" height= "0.01" mass="0.1" position="0,0.045,-0.02" orientation="0,0,90"/>
+            <link id= "mr_wheel" geometry ="cylinder" radius="0.02" height= "0.01" mass="0.1" position="0,-0.045,-0.02" orientation="0,0,90"/>
+            
+            <link id= "bl_wheel" geometry ="cylinder" radius="0.02" height= "0.01" mass="0.1" position="-0.06,0.045,-0.02" orientation="0,0,90"/>
+            <link id= "br_wheel" geometry ="cylinder" radius="0.02" height= "0.01" mass="0.1" position="-0.06,-0.04,-0.02" orientation="0,0,90"/>
+            
+          </links>
+
+          <joints>
+        <joint id="base_lidar" type="revolute" axis="0,0,1">
+                <parent link="base" position="0.04,0,0.02" orientation="0,0,0"/>
+                <child link="lidar_servo" position="0,0,0.005" orientation="0,0,0"/>
+        </joint>
+        
+        <joint id="base_flarm" type="fixed">
+                <parent link="base" position="0.05,0.03,-0.01" orientation="90,45,0"/>
+                <child link="fl_arm" position="0,0,0" orientation="0,0,0"/>
+        </joint>
+        
+        <joint id="base_frarm" type="fixed">
+                <parent link="base" position="0.05,-0.03,-0.01" orientation="90,45,0"/>
+                <child link="fr_arm" position="0,0,0" orientation="0,0,0"/>  
+        </joint>
+        
+        
+        <joint id="base_mlarm" type="fixed">
+                <parent link="base" position="-0.025,0.03,-0.01" orientation="90,45,0"/>
+                <child link="ml_arm" position="0,0,0" orientation="0,0,0"/>
+        </joint>
+        
+        <joint id="base_mrarm" type="fixed">
+                <parent link="base" position="-0.025,-0.03,-0.01" orientation="90,45,0"/>
+                <child link="mr_arm" position="0,0,0" orientation="0,0,0"/>
+        </joint>
+        
+        
+        <joint id="base_blarm" type="fixed">
+                <parent link="base" position="-0.05,0.03,-0.01" orientation="90,-45,0"/>
+                <child link="bl_arm" position="0,0,0" orientation="0,0,0"/>  
+        </joint>
+        
+        <joint id="base_brarm" type="fixed">
+                <parent link="base" position="-0.05,-0.03,-0.01" orientation="90,-45,0"/>
+                <child link="br_arm" position="0,0,0" orientation="0,0,0"/>  
+        </joint>
+        
+              <joint id="fl_arm_wheel" type="revolute" axis = "0,0,1">
+                <parent link="fl_arm" position="0.015,-0.025,0" orientation="0,0,0"/>
+                <child link="fl_wheel" position="0,0,0" orientation="0,90,0"/>  
+        </joint>
+        
+        <joint id="fr_arm_wheel" type="revolute" axis = "0,0,1">
+                <parent link="fr_arm" position="-0.005,-0.025,0" orientation="0,0,0"/>
+                <child link="fr_wheel" position="0,0,0" orientation="0,90,0"/>  
+        </joint>
+        
+        <joint id="ml_arm_wheel" type="revolute" axis = "0,0,1">
+                <parent link="ml_arm" position="0.015,-0.025,0" orientation="0,0,0"/>
+                <child link="ml_wheel" position="0,0,0" orientation="0,90,0"/>  
+        </joint>
+
+          
+        <joint id="mr_arm_wheel" type="revolute" axis = "0,0,1">
+                <parent link="mr_arm" position="-0.005,-0.025,0" orientation="0,0,0"/>
+                <child link="mr_wheel" position="0,0,0" orientation="0,90,0"/>  
+        </joint>
+        
+        <joint id="bl_arm_wheel" type="revolute" axis = "0,0,1">
+                <parent link="bl_arm" position="0.015,0.025,0" orientation="0,0,0"/>
+                <child link="bl_wheel" position="0,0,0" orientation="0,90,0"/>  
+        </joint>
+        
+        <joint id="br_arm_wheel" type="revolute" axis = "0,0,1">
+                <parent link="br_arm" position="-0.005,0.025,0" orientation="0,0,0"/>
+                <child link="br_wheel" position="0,0,0" orientation="0,90,0"/>  
+        </joint>
+        
+          </joints>
+
+        <devices>
+        <radios medium="radios">
+                <radio anchor="base" duplex_mode="half" range="1"
+                      position="0,0,0.0075"/>
+              </radios>
+        
+        <proximity_sensors>
+                <sensor anchor="lidar_servo" position="0,0,0" offset="0,0,0.02" direction="1,0,0" range="1" show_rays="true"/>
+              </proximity_sensors>
+        </devices>
         </prototype>
+
        </entity>
     </distribute>
 
@@ -152,7 +192,7 @@
   </physics_engines>
 
   <media>     	
-  	<radio id="radios" />
+  	<radio id="radios"/>
   </media>
 
   <visualization>
