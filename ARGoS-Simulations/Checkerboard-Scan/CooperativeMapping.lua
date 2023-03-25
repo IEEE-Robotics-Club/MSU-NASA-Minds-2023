@@ -45,7 +45,7 @@ function CoopMappingAlgorithmInit(home_coord, numberOfBots, size, center)
     map["chunkLength"] = size/numberOfBots
 
     --Pick First Chunk
-	map["currentSquare"] = ClosestSquare(map)
+	map["currentSquare"] = map["field"][1]
 
     --Generate Target List and Set Index
     map["targetIndex"] = 1
@@ -251,22 +251,3 @@ end
 function ReceiveUpdate(agentState)
     print(agentState)
 end
-
-robot = {
-    positioning = {
-        position ={
-            x = -1.7,
-            y = -1.7
-        }
-    }
-}
-
-Home_coord = {-1.6, -1.6}
-NumberOfBots = 3
-FieldSize = 3
-Center = {0,0}
-AgentMap = {}
-AgentState= {}
-
-AgentMap = CoopMappingAlgorithmInit(Home_coord, NumberOfBots, FieldSize, Center)
-print("help")
