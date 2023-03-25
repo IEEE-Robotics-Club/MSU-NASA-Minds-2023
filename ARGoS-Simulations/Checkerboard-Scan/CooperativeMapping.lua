@@ -106,9 +106,9 @@ end
 
 function NextTarget(map)
     --We have more targets in our list, so increment the target index
-    map["targetIndex"] = map["targetIndex"]+1
+    map["targetIndex"] = map["targetIndex"] + 1
     --Set the current target to the next target in the list
-    map["target"] = map["targetList"][map["targetIndex"]]
+    map["target"] = {x = map["targetList"][map["targetIndex"]][1], y = map["targetList"][map["targetIndex"]][2]}
 end
 
 function CollectData(map)
