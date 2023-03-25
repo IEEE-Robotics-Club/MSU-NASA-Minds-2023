@@ -23,15 +23,16 @@ function step()
 
 	--Transmit square to everybody in range
 	robot.radios.radio_tx.tx_data({mySquare})
-
+--[[
 	--Receive everybody elses data
 	--If there is data to receive
 	if # robot.radios.radio_rx.rx_data > 0 then
 		--Update the map
 		for i = 1, #robot.radios.radio_rx.rx_data, 1 do
-			fieldStatus[robot.radios.radio_rx.rx_data[i][1]] = true
-		end
-	end
+			fieldStatus[robot.radios.radio_rx.rx_data[i][1]] --= --true
+		--end
+	--end ]]
+
 
 	CoopMappingAlgorithmStep(AgentMap, AgentState)
 
