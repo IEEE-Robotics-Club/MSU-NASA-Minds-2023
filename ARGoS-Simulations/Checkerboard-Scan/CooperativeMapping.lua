@@ -133,7 +133,7 @@ function ArrivedAtTarget(map)
 	local sum_of_squares = (map["target"]["x"] - current_x)^2+ ((map["target"]["y"] - current_y)^2)
 	local traj_magnitude = math.sqrt(sum_of_squares)
 
-    if (traj_magnitude > 0.1) then
+    if (traj_magnitude < 0.1) then
 		return true
     end
 	return false
