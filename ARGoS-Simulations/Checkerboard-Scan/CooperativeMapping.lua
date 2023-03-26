@@ -83,7 +83,6 @@ function CoopMappingAlgorithmStep(map, agentState)
                 speed = 0
 			end
 		else
-            log("Here is the issue")
 			map["currentSquare"] = ClosestSquare(map)
 			map["target"] = map["currentSquare"]["bl"]
 		end
@@ -109,8 +108,9 @@ end
 function NextTarget(map)
     --We have more targets in our list, so increment the target index
     map["targetIndex"] = map["targetIndex"] + 1
+    local index = map["targetIndex"]
     --Set the current target to the next target in the list
-    map["target"] = {x = map["targetList"][map["targetIndex"]][1], y = map["targetList"][map["targetIndex"]][2]}
+    map["target"] = {x = map["targetList"][index][1], y = map["targetList"][index][2]}
 end
 
 function CollectData(map)
