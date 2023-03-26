@@ -107,15 +107,15 @@ function DriveTo(x,y, forward_velocity)
 	--If the result is negative, Turn Left. Otherwise turn Right. We can use the angle to determine how much we need to turn.
 	local speed_ratio = 10 
 	
-	if cross_p < -0.02 then
+	if cross_p < -0.01 then
 		turnLeft(speed_ratio/2)
 		isTurning = true
 	
-	elseif cross_p > 0.02 then 
+	elseif cross_p > 0.01 then 
 		turnRight(speed_ratio/2)
 		isTurning = false
 	else
-		if a < 0.2 then
+		if a < 0.02 then
 			driveForward(forward_velocity)		
 		end
 	end
