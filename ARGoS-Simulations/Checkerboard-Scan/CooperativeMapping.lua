@@ -1,4 +1,5 @@
-
+require('movement-functions')
+require('mapping-functions')
 
 Map = {
     --Map Meta Data
