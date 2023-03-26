@@ -34,7 +34,7 @@ AgentState = {
 
 function CoopMappingAlgorithmInit(home_coord, numberOfBots, size, center)
     local map = Map
-    local idNumber = string.gsub(robot.id, "tellus", "") + 1
+    local idNumber = string.gsub(robot.id, "tellus", "") + 2
 
     --Set Home Coordinate and Chunk out the entire field
     map["home_coordinate"] = home_coord
