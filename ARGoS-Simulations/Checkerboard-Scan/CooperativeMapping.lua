@@ -104,6 +104,7 @@ function NextTarget(map)
     --We have more targets in our list, so increment the target index
     map["targetIndex"] = map["targetIndex"] + 1
     local index = map["targetIndex"]
+    log("Picking next target")
     --Set the current target to the next target in the list
     map["target"] = {x = map["targetList"][index][1], y = map["targetList"][index][2]}
 end
