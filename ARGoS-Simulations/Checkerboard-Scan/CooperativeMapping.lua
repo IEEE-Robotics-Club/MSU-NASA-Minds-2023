@@ -71,22 +71,17 @@ function CoopMappingAlgorithmStep(map, agentState)
             --Generate Target List and Reset Index
             map["targetIndex"] = 1
             map["targetList"] = GeneratePath(map["field"]["currentSquare"]["bl"], map["chunkLength"], map["gprWidth"] , 0)
-	end
+	    end
 
 	else
-		if(AgentInSector(map)) then
-			CollectData(map)
-			if (ArrivedAtTarget(map)) then
-				--map["target"]  = NextTarget(map)
-            elseif (ArrivedAtTarget(map) and map["target"]["x"] == map["home_coordinate"]["x"] and map["target"]["y"] == map["home_coordinate"]["y"]) then
-                --We have arrived at the home target, which means we are done. Kill the speed 
-                speed = 0
-			end
-		else
-			map["currentSquare"] = ClosestSquare(map)
-			map["target"] = map["currentSquare"]["bl"]
-		end
-	end
+        CollectData(map)
+        if (ArrivedAtTarget(map)) then
+            map["target"]  = NextTarget(map)
+        elseif (ArrivedAtTarget(map) and map["target"]["x"] == map["home_coordinate"]["x"] and map["target"]["y"] == map["home_coordinate"]["y"]) then
+            --We have arrived at the home target, which means we are done. Kill the speed 
+            speed = 0
+        end
+    end
 
     --If we detect an obstacle, we will temporarily change the current target to avoid it
 --[[
@@ -251,9 +246,9 @@ end
 
 
 function BroadcastUpdate(agentState)
-    print(agentState)
+    log(agentState)
 end
 
 function ReceiveUpdate(agentState)
-    print(agentState)
+    log(agentState)
 end
