@@ -34,6 +34,7 @@ AgentState = {
 
 function CoopMappingAlgorithmInit(home_coord, numberOfBots, size, center)
     local map = Map
+    local idNumber = string.gsub(robot.id, "tellus", "") + 1
 
     --Set Home Coordinate and Chunk out the entire field
     map["home_coordinate"] = home_coord
@@ -46,7 +47,7 @@ function CoopMappingAlgorithmInit(home_coord, numberOfBots, size, center)
     map["chunkLength"] = size/numberOfBots
 
     --Pick First Chunk
-	map["currentSquare"] = ClosestSquare(map)
+	map["currentSquare"] = map["field"][idNumber]
 
     --Generate Target List and Set Index
     map["targetIndex"] = 1
