@@ -76,12 +76,13 @@ function CoopMappingAlgorithmStep(map, agentState)
 		if(AgentInSector(map)) then
 			CollectData(map)
 			if (ArrivedAtTarget(map)) then
-				map["target"]  = NextTarget(map)
+				--map["target"]  = NextTarget(map)
             elseif (ArrivedAtTarget(map) and map["target"]["x"] == map["home_coordinate"]["x"] and map["target"]["y"] == map["home_coordinate"]["y"]) then
                 --We have arrived at the home target, which means we are done. Kill the speed 
                 speed = 0
 			end
 		else
+            log("Here is the issue")
 			map["currentSquare"] = ClosestSquare(map)
 			map["target"] = map["currentSquare"]["bl"]
 		end
