@@ -70,7 +70,7 @@ function CoopMappingAlgorithmStep(map, agentState)
 
             --Generate Target List and Reset Index
             map["targetIndex"] = 1
-            map["targetList"] = GeneratePath(map["field"]["currentSquare"]["bl"], map["chunkLength"], map["gprWidth"] , 0)
+            map["targetList"] = GeneratePath(map["currentSquare"]["bl"], map["chunkLength"], map["gprWidth"] , 0)
 	    end
 
 	else
