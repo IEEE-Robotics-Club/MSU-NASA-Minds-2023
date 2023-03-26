@@ -46,7 +46,7 @@ function CoopMappingAlgorithmInit(home_coord, numberOfBots, size, center)
     map["chunkLength"] = size/numberOfBots
 
     --Pick First Chunk
-	map["currentSquare"] = map["field"][1]
+	map["currentSquare"] = ClosestSquare(map)
 
     --Generate Target List and Set Index
     map["targetIndex"] = 1
@@ -137,7 +137,7 @@ end
 
 function AllSectorsCovered(map)
     for i = 1, #map["fieldStatus"], 1 do
-        if fieldStatus[i] == false then
+        if map["fieldStatus"][i] == false then
             return false
         end
     end
