@@ -14,7 +14,7 @@ Map = {
     targetList = {},
     targetIndex = 1,
     currentSquare = {},
-
+    squareIndex = {},
     --Current Target (Can be changed by obstacleAvoid and setTarget)
     target = {},
 
@@ -146,6 +146,7 @@ end
 
 function SectorComplete(map)
     if map["targetIndex"] == #map["targetList"] then
+        map["fieldStatus"][map["squareIndex"]] = true
         return true
     else
         return false
@@ -175,6 +176,7 @@ function ClosestSquare(map)
             minimum = distanceList[i]["val"]
         end
     end
+    map["squareIndex"] = square
     return map["field"][square]
 end
 
