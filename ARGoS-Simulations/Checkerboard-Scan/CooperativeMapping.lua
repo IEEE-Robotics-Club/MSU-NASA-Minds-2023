@@ -130,9 +130,9 @@ function ArrivedAtTarget(map)
 	local current_y= robot.positioning.position.y
 
 	--Create Trajectory vector pointing at the next target 
-	local sum_of_squares = (map["target"]["x"] - current_x)^2+ ((map["target"]["y"] - current_y)^2)
+	local sum_of_squares = ((map["target"]["x"] - current_x)^2) + ((map["target"]["y"] - current_y)^2)
 	local traj_magnitude = math.sqrt(sum_of_squares)
-
+    log(traj_magnitude)
     if (traj_magnitude < 0.1) then
 		return true
     end
