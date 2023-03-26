@@ -21,12 +21,12 @@ function turnLeft(velocity)
 
 	--reverse left side
 	robot.joints.bl_arm_wheel.set_target(velocity)
-	robot.joints.ml_arm_wheel.set_target(velocity/2)
+	robot.joints.ml_arm_wheel.set_target(velocity)
 	robot.joints.fl_arm_wheel.set_target(velocity)
 
 	--forward right side
 	robot.joints.br_arm_wheel.set_target(0-velocity)
-	robot.joints.mr_arm_wheel.set_target(velocity/2)
+	robot.joints.mr_arm_wheel.set_target(velocity)
 	robot.joints.fr_arm_wheel.set_target(0-velocity)
 	
 end
@@ -34,12 +34,12 @@ end
 function turnRight(velocity)
 	--forward left side
 	robot.joints.bl_arm_wheel.set_target(0-velocity)
-	robot.joints.ml_arm_wheel.set_target(0-velocity/2)
+	robot.joints.ml_arm_wheel.set_target(0-velocity)
 	robot.joints.fl_arm_wheel.set_target(0-velocity)
 
 	--reverse right side
 	robot.joints.br_arm_wheel.set_target(velocity)
-	robot.joints.mr_arm_wheel.set_target(0-velocity/2)
+	robot.joints.mr_arm_wheel.set_target(0-velocity)
 	robot.joints.fr_arm_wheel.set_target(velocity)
 end
 
@@ -105,19 +105,17 @@ function DriveTo(x,y, forward_velocity)
 	--log("Cross Product:" .. cross_p)
 	--log("Face Angle " .. current_angle)
 	--If the result is negative, Turn Left. Otherwise turn Right. We can use the angle to determine how much we need to turn.
-	local speed_ratio = 10 
+	local speed_ratio = 5 
 	
-	if cross_p < -0.01 then
+	if cross_p < -0.05 then
 		turnLeft(speed_ratio/2)
 		isTurning = true
 	
-	elseif cross_p > 0.01 then 
+	elseif cross_p > 0.05 then 
 		turnRight(speed_ratio/2)
 		isTurning = false
 	else
-		if a < 0.02 then
-			driveForward(forward_velocity)		
-		end
+		driveForward(forward_velocity)		
 	end
 	return isTurning
 end

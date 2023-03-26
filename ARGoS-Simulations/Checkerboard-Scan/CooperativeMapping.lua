@@ -19,8 +19,8 @@ Map = {
     target = {},
 
     --Scientific Data
-    data = {},
-    displacement_thresh = 0.25,
+    Data = {},
+    displacement_thresh = 0,
     last_data_point = {x=0, y=0},
 
     --GPR Sweep Info
@@ -59,7 +59,7 @@ function CoopMappingAlgorithmInit(home_coord, numberOfBots, size, center)
 end
 
 function CoopMappingAlgorithmStep(map, agentState)
-    local speed = 10
+    local speed = 5
 
 	if (SectorComplete(map)) then
 		if(AllSectorsCovered(map)) then
@@ -117,6 +117,7 @@ function CollectData(map)
     local displacement = math.sqrt(x_disp*x_disp + y_disp*y_disp)
 
     --If we've traveled far enough, take a data reading
+    table.insert(map["Data"], {robot.positioning.position.x, robot.positioning.position.y})
     if map["displacement_thresh"] >= displacement then
         table.insert(map["Data"], {robot.positioning.position.x, robot.positioning.position.y})
     end

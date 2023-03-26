@@ -4,7 +4,7 @@
 
 <framework>
 	<experiment length ="0"
-		    ticks_per_second="30"
+		    ticks_per_second="20"
         random_seed= "0"/>
 </framework>
 
@@ -66,7 +66,7 @@
   </box>
 
     <distribute>
-        <position method="uniform" min="-1.5,-1.5,0" max="-1,-1,0" />
+        <position method="uniform" min="-1.8,-1.8,0.05" max="-0.75,-0.75,0.05" />
         <orientation method="gaussian" mean="0,0,0" std_dev="0,0,0" />
         <entity quantity="3" max_trials="100">
         <prototype id="tellus" movable="true">
@@ -74,7 +74,7 @@
           <controller config="tellus_controller"/>
 
           <links ref = "base">
-            <link id="base" geometry="box" size="0.1,0.05,0.02" mass="1" position="0,0,0" orientation="0,0,0"/>
+            <link id="base" geometry="box" size="0.1,0.05,0.02" mass="5" position="0,0,0" orientation="0,0,0"/>
             <link id="lidar_servo" geometry="cylinder" radius="0.01" height="0.02" mass="0.2" position="0.04,0,0.02" orientation="0,0,0"/>
             <link id="fl_arm" geometry="box" size="0.01,0.05,0.01" mass="0.1" position="0.05,0.03,-0.01" orientation="90,45,0"/>
             <link id="fr_arm" geometry="box" size="0.01,0.05,0.01" mass="0.1" position="0.05,-0.03,-0.01" orientation="90,45,0"/>
@@ -85,14 +85,14 @@
             <link id="bl_arm" geometry="box" size="0.01,0.05,0.01" mass="0.1" position="-0.05,0.03,-0.01" orientation="90,-45,0"/>
             <link id="br_arm" geometry="box" size="0.01,0.05,0.01" mass="0.1" position="-0.05,-0.03,-0.01" orientation="90,-45,0"/>
             
-            <link id= "fl_wheel" geometry ="cylinder" radius="0.02" height= "0.01" mass="0.1" position="0.06,0.045,-0.02" orientation="0,0,90"/>
-            <link id= "fr_wheel" geometry ="cylinder" radius="0.02" height= "0.01" mass="0.1" position="0.06,-0.04,-0.02" orientation="0,0,90"/>
+            <link id= "fl_wheel" geometry ="cylinder" radius="0.03" height= "0.015" mass="0.1" position="0.06,0.045,-0.02" orientation="0,0,90"/>
+            <link id= "fr_wheel" geometry ="cylinder" radius="0.03" height= "0.015" mass="0.1" position="0.06,-0.04,-0.02" orientation="0,0,90"/>
             
-            <link id= "ml_wheel" geometry ="cylinder" radius="0.02" height= "0.01" mass="0.1" position="0,0.045,-0.02" orientation="0,0,90"/>
-            <link id= "mr_wheel" geometry ="cylinder" radius="0.02" height= "0.01" mass="0.1" position="0,-0.045,-0.02" orientation="0,0,90"/>
+            <link id= "ml_wheel" geometry ="cylinder" radius="0.03" height= "0.015" mass="0.1" position="0,0.045,-0.02" orientation="0,0,90"/>
+            <link id= "mr_wheel" geometry ="cylinder" radius="0.03" height= "0.015" mass="0.1" position="0,-0.045,-0.02" orientation="0,0,90"/>
             
-            <link id= "bl_wheel" geometry ="cylinder" radius="0.02" height= "0.01" mass="0.1" position="-0.06,0.045,-0.02" orientation="0,0,90"/>
-            <link id= "br_wheel" geometry ="cylinder" radius="0.02" height= "0.01" mass="0.1" position="-0.06,-0.04,-0.02" orientation="0,0,90"/>
+            <link id= "bl_wheel" geometry ="cylinder" radius="0.03" height= "0.015" mass="0.1" position="-0.06,0.045,-0.02" orientation="0,0,90"/>
+            <link id= "br_wheel" geometry ="cylinder" radius="0.03" height= "0.015" mass="0.1" position="-0.06,-0.04,-0.02" orientation="0,0,90"/>
             
           </links>
 
@@ -185,9 +185,10 @@
   </arena>
 
   <physics_engines>
-    <dynamics3d id="dyn3d" default_friction="2.0">
-      <floor height="0.01" friction="0.1"/>
+    <dynamics3d id="dyn3d" default_friction="0.7">
+      <floor height="0.01" friction="1"/>
       <gravity g="10" />
+      <magnetism max_distance="0.001" />
     </dynamics3d>
   </physics_engines>
 
@@ -199,7 +200,7 @@
     <qt-opengl lua_editor="true">
       <camera>
         <placements>
-          <placement index="0" position="0,0,8.14689" look_at="0,0,0" up="1,0,0" lens_focal_length="5" />
+          <placement index="0" position="0,0,8.14689" look_at="0,0,0" up="1,0,0" lens_focal_length="56" />
         </placements>
       </camera>
     </qt-opengl>

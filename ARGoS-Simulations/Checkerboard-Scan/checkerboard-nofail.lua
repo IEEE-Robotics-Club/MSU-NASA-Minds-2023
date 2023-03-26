@@ -13,6 +13,7 @@ AgentState= {}
 --[[ This function is executed every time you press the 'execute' button ]]
 function init()
 	AgentMap = CoopMappingAlgorithmInit(Home_coord, NumberOfBots, FieldSize, Center)
+
 end
 
 
@@ -35,6 +36,10 @@ function step()
 
 
 	CoopMappingAlgorithmStep(AgentMap, AgentState)
+	log(AgentMap["target"]["x"])
+	log(AgentMap["target"]["y"])
+	log(robot.positioning.position.x)
+	log(robot.positioning.position.y)
 
 end
 
