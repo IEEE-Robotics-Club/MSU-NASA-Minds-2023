@@ -106,7 +106,7 @@ function NextTarget(map)
     local index = map["targetIndex"]
     log("Picking next target")
     --Set the current target to the next target in the list
-    map["target"] = {x = map["targetList"][index][1], y = map["targetList"][index][2]}
+    return {x = map["targetList"][index][1], y = map["targetList"][index][2]}
 end
 
 function CollectData(map)
