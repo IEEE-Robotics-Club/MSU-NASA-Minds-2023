@@ -97,7 +97,7 @@ function CoopMappingAlgorithmStep(map, agentState)
 ]]  
 
     --Drive toward the target
-    driveTo(map["target"]["x"], map["target"]["y"], speed)
+    DriveTo(map["target"]["x"], map["target"]["y"], speed)
 
 	BroadcastUpdate(agentState)
 	ReceiveUpdate(agentState)
