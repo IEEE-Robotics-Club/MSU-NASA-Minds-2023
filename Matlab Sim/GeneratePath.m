@@ -1,4 +1,5 @@
 function travel_path = GeneratePath(bottom_left, length, width, offset)
+    bottom_left = cell2mat(bottom_left);
     x = bottom_left(1)+offset;
     y = bottom_left(2)+offset;
     travel_path = [x, y];
