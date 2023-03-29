@@ -18,7 +18,7 @@ classdef Tellus
         data = [];
 
         chunkLen
-        granularity = 4;
+        granularity = 8;
         offset = 0;
         radius=0.075;
 

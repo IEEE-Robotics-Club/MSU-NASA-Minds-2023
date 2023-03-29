@@ -48,11 +48,24 @@ end
 %Display statistics
 %Overall Displacement
 for i = 1 :length(bots)
-    disp("Total Displacement of of rover")
+    disp("Total Displacement of rover")
     disp(i)
     disp(length(cell2mat(bots(i).data))*bots(i).scanRate*bots(i).velocity)
 end
 
+%Total coverage
+area = 0;
+for i = 1 :length(bots)
+    disp("Total Area Coverage of rover")
+    disp(i)
+    disp(length(cell2mat(bots(i).data))*2*r)
+    area = area+length(cell2mat(bots(i).data))*2*r*bots(i).scanRate*bots(i).velocity;
+end
+disp("Total Area Coverage of all rovers")
+disp(area)
+
+disp("Percentage of Coverage")
+disp(area/(FieldLength^2))
 
 %Display each point the rover passed through
 
@@ -70,8 +83,6 @@ scatter(x,y)
 th = 0:pi/50:2*pi;
 x_circle = r * cos(th);
 y_circle = r * sin(th);
-
-change_of_area = pi*r^2;
 
 %Create the Robot objects on screen
 for i = 1 : numBots
