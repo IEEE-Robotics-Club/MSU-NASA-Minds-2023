@@ -25,7 +25,7 @@ classdef Tellus
     end
 
     methods
-        function [obj, fieldStatus] = init(obj, startPoints, chunkLen, start_coord, startChunk, chunkSize, fieldStatus)
+        function [obj, fieldStatus] = init(obj, startPoints, chunkLen, start_coord, startChunk, radius, fieldStatus)
             %UNTITLED Construct an instance of this class
             %   Detailed explanation goes here
 
@@ -35,7 +35,7 @@ classdef Tellus
             obj.current_coord = start_coord; 
             obj.chunkLen = chunkLen;
             obj.startingPoints = startPoints; 
-            
+            obj.radius = radius;
             %Pick a chunk
             obj.fieldIndex = startChunk; 
             obj.fieldStatus(obj.fieldIndex) = true; 

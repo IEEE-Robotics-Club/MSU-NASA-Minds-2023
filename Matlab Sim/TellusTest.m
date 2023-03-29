@@ -8,15 +8,15 @@ numBots = 3;
 %How many squares shall the field be divided in?
 chunkSize = 4;
 
+%Robot Scanning Radius
+r = 0.075;
+
 %Center Coordingate and Chunk Length
 centerCoord = [0,0];
 chunkLen = FieldLength/chunkSize;
 
 %Map creation
 chunk = Chunk(FieldLength,FieldLength,chunkSize,centerCoord);
-
-%Robot Scanning Radius
-r = 0.075;
 
 %Create the field
 fieldStatus = repelem(0, chunkSize*chunkSize);
@@ -26,7 +26,7 @@ fieldIndex = 1;
 bots = [];
 for i = 1: numBots
     var = Tellus;
-    [var, fieldStatus] = var.init(chunk(1:4:end), chunkLen, [-3,-3], i, chunkSize, fieldStatus);
+    [var, fieldStatus] = var.init(chunk(1:4:end), chunkLen, [-3,-3], i, r, fieldStatus);
     bots = [bots, var];
 end
 
