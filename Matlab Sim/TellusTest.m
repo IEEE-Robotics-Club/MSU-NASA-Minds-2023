@@ -1,12 +1,12 @@
 clc
 %Checkerboard Scanning Setup
 %How big in meters is the field length
-FieldLength = 10;
+FieldLength = 5;
 
 %How many Robots?
 numBots = 3;
 %How many squares shall the field be divided in?
-chunkSize = 5;
+chunkSize = 4;
 
 %Center Coordingate and Chunk Length
 centerCoord = [0,0];
@@ -16,7 +16,7 @@ chunkLen = FieldLength/chunkSize;
 chunk = Chunk(FieldLength,FieldLength,chunkSize,centerCoord);
 
 %Robot Scanning Radius
-r = 0.10;
+r = 0.075;
 
 %Create the field
 fieldStatus = repelem(0, chunkSize*chunkSize);
@@ -26,7 +26,7 @@ fieldIndex = 1;
 bots = [];
 for i = 1: numBots
     var = Tellus;
-    [var, fieldStatus] = var.init(chunk(1:4:end), chunkLen, [-5,-5], i, chunkSize, fieldStatus);
+    [var, fieldStatus] = var.init(chunk(1:4:end), chunkLen, [-3,-3], i, chunkSize, fieldStatus);
     bots = [bots, var];
 end
 
@@ -45,6 +45,15 @@ while sum(fieldStatus) ~= length(fieldStatus)*2
     end
 end
 
+%Display statistics
+%Overall Displacement
+for i = 1 :length(bots)
+    disp("Total Displacement of of rover")
+    disp(i)
+    disp(length(cell2mat(bots(i).data))*bots(i).scanRate*bots(i).velocity)
+end
+
+
 %Display each point the rover passed through
 
 %Setup Display
@@ -62,22 +71,25 @@ th = 0:pi/50:2*pi;
 x_circle = r * cos(th);
 y_circle = r * sin(th);
 
+change_of_area = pi*r^2;
+
+%Create the Robot objects on screen
 for i = 1 : numBots
     pointArr(i) = rectangle( 'Parent', gca, 'Position', [-5, -5, .1, .1], 'Curvature', [1 1] );
 end
 
-
+%Generate the frames for each robot
 for frameNr = 1 :2:length(cell2mat(bots(1).data))
+    hold on
     for j = 1 : numBots
         set(pointArr(j), 'Position', [bots(j).data{frameNr}(1), bots(j).data{frameNr}(2), .3, .3]);
         hold on
-            xc_temp = x_circle +bots(j).data{frameNr}(1);
+            xc_temp = x_circle + bots(j).data{frameNr}(1);
             yc_temp = y_circle + bots(j).data{frameNr}(2);
             circles = plot(xc_temp, yc_temp);   
             fill(xc_temp, yc_temp, j)
-        hold off
     end
-
+    hold off
   frames(frameNr) = getframe;
 end
 

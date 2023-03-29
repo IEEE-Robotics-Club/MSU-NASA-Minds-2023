@@ -20,6 +20,7 @@ classdef Tellus
         chunkLen
         granularity = 4;
         offset = 0;
+        radius=0.075;
 
     end
 
@@ -40,7 +41,7 @@ classdef Tellus
             obj.fieldStatus(obj.fieldIndex) = true; 
             %Insert Starting Point into path 
             %Append Path with Generate Path call 
-            obj.path = [obj.path, GeneratePath(startPoints(obj.fieldIndex), chunkLen, chunkLen/obj.granularity, obj.offset)];
+            obj.path = [obj.path, GeneratePath(startPoints(obj.fieldIndex), chunkLen-(obj.radius), (chunkLen-(obj.radius))/obj.granularity, obj.offset)];
             
             fieldStatus = obj.fieldStatus; 
         end
@@ -78,7 +79,7 @@ classdef Tellus
 
 
                     %Generate Path and Reset Index
-                    obj.path = [GeneratePath(obj.startingPoints(obj.fieldIndex), obj.chunkLen, obj.chunkLen/obj.granularity, obj.offset)];
+                    obj.path = [GeneratePath(obj.startingPoints(obj.fieldIndex), obj.chunkLen-(obj.radius), (obj.chunkLen-(obj.radius))/obj.granularity, obj.offset)];
                     obj.pathIndex = 1;
                 end
             end
